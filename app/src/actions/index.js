@@ -12,7 +12,7 @@ export const fetchQuotes = () => dispatch => {
             "https://api.kanye.rest"
         )
         
-    .then(response => dispatch(console.log(response.data.quote),{ type: AXIOS_SUCCESS, payload: response.data}))
+    .then(response => dispatch({ type: AXIOS_SUCCESS, payload: response.data}))
     .catch(error => dispatch({ type: AXIOS_FAILURE, payload: error.response}));
     
 };

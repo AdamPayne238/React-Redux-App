@@ -19,7 +19,7 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 isFetching: false,
                 error: '',
-                kanyeQuotes: action.payload
+                kanyeQuotes: [action.payload]
             };
         case AXIOS_FAILURE:
             return{
