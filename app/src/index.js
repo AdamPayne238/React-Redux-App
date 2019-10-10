@@ -4,9 +4,32 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//New Imports for Index.js
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+//Import createStore/applyMiddleware
+import { createStore, applyMiddleware } from "redux";
+
+//Import Provider
+import { Provider } from "react-redux";
+
+//Import Thunk
+import thunk from "redux-thunk";
+
+//Import RootReducer
+//CHECK THIS LATER!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+import rootReducer from "./reducer"
+
+//Define Store (const store = createStore) w/ rootreducer, middleware, && thunk
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+
+ReactDOM.render(
+
+//Wrap App in Provider and pass store as ( <Provider store={store}> )
+<Provider store={store}>
+    <App />
+</Provider>
+
+, document.getElementById('root'));
+
 serviceWorker.unregister();
