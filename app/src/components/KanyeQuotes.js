@@ -4,13 +4,15 @@ import React, { useEffect } from "react";
 
 import { connect } from "react-redux";
 
-import { kanyeQuotes } from "../actions/index";
+import { fetchQuotes } from "../actions";
 
 import Kanye from "./Kanye";
 
 const KanyeQuotes = props => {
     useEffect(() => {
-        props.kanyeQuotes();
+        props.fetchQuotes();
+    // add {} inside array to start infinite loop? lol
+    // also add props inside of [] for same result?
     }, []);
 
     if (props.isFetching){
@@ -32,7 +34,7 @@ const KanyeQuotes = props => {
 
 const mapStateToProps = state => {
     return {
-        kanyeQuotes: state.fetchQuotes,
+        kanyeQuotes: state.kanyeQuotes,
         isFetching: state.isFetching,
         error: state.error
     };
@@ -40,5 +42,5 @@ const mapStateToProps = state => {
 
 export default connect(
     mapStateToProps,
-    {kanyeQuotes}
+    {fetchQuotes}
 )(KanyeQuotes);

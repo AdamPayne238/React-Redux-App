@@ -4,15 +4,17 @@ export const START_AXIOS = 'START_AXIOS';
 export const AXIOS_SUCCESS = 'AXIOS_SUCCESS';
 export const AXIOS_FAILURE = 'AXIOS_FAILURE';
 
-export const kanyeQuotes = () => dispatch => {
+export const fetchQuotes = () => dispatch => {
     dispatch({ type: START_AXIOS });
 
     axios
         .get(
             "https://api.kanye.rest"
         )
-    .then(response => dispatch({ type: AXIOS_SUCCESS, payload: response}))
+        
+    .then(response => dispatch(console.log(response.data.quote),{ type: AXIOS_SUCCESS, payload: response.data}))
     .catch(error => dispatch({ type: AXIOS_FAILURE, payload: error.response}));
+    
 };
 
 
